@@ -52,12 +52,12 @@ const vue = new Vue({
             }
             if (this.answer === '...') return
             if (parseInt(this.answer) == this.x * this.y) {
-                blink('#app input', 'true')
+                blink('input[name="answer"]', 'true')
                 this.nbRep++
                 this.randomMultilication()
                 this.answer = ''
             } else {
-                blink('#app input', 'false')
+                blink('input[name="answer"]', 'false')
                 this.nbErr++
                 this.answer = ''
             }
@@ -72,6 +72,7 @@ const vue = new Vue({
         resetTimer() {
             this.timeLeft = this.maxTime
             this.timePassed = 0
+            clearInterval(timerInterval)
         },
         startTimer() {
             timerInterval = setInterval(() => {
