@@ -1,4 +1,3 @@
-const NB_SECONDS = 60
 let timerInterval = null
 
 function blink(el, className) {
@@ -23,14 +22,15 @@ const vue = new Vue({
     },
     computed: {
         isTimerActive() {
-            return this.timeLeft !== NB_SECONDS && this.timeLeft !== 0
+            return this.timeLeft !== this.maxTime && this.timeLeft !== 0
         }
     },
     data() {
         return {
             x: 0,
             y: 0,
-            answer: '...',
+            answer: '',
+            maxTime: 60,
             timeLeft: 0,
             timePassed: 0,
             nbRep: 0,
@@ -70,13 +70,13 @@ const vue = new Vue({
             this.answer = ''
         },
         resetTimer() {
-            this.timeLeft = NB_SECONDS
+            this.timeLeft = this.maxTime
             this.timePassed = 0
         },
         startTimer() {
             timerInterval = setInterval(() => {
                 this.timePassed = this.timePassed += 1
-                this.timeLeft = NB_SECONDS - this.timePassed
+                this.timeLeft = this.maxTime - this.timePassed
                 if (this.timeLeft <= 0) {
                     clearInterval(timerInterval)
                 }

@@ -12,6 +12,11 @@
   <h1 class="title">Calcul mental pour Léopold Gx</h1>
   <main>
     <div id="app">
+      <div class="time-settings">
+        <label for="max-time" class="">Temps total : </label>
+        <input type="number" name="max-time" v-model.number="maxTime" value="60" @keyup="resetTimer">
+        <span>s</span>
+      </div>
       <div class="timer-container">
         <div class="stats">
           <p><b>{{ nbRep }}</b> {{ nbRep > 1 ? 'bonnes réponses' : 'bonne réponse' }}</p>
