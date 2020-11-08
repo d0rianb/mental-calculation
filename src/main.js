@@ -50,7 +50,7 @@ const vue = new Vue({
                     return
                 }
             }
-            if (this.answer === '...') return
+            if (this.answer === '...' || !this.answer.length) return
             if (parseInt(this.answer) == this.x * this.y) {
                 blink('input[name="answer"]', 'true')
                 this.nbRep++
